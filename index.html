@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mustafa Web - Website Development</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Poppins', sans-serif; line-height: 1.6; color: #e0e0e0; background: #0a0e27; }
+
+    nav {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 18px 8%; background: rgba(10,14,39,0.95);
+      box-shadow: 0 2px 15px rgba(0,0,0,0.5); position: sticky; top: 0; z-index: 100;
+    }
+    nav .logo { font-size: 24px; font-weight: 800; color: #00d9ff; }
+    nav .logo span { color: #ffa502; }
+    nav ul { display: flex; list-style: none; gap: 28px; }
+    nav a { text-decoration: none; color: #e0e0e0; font-weight: 500; font-size: 15px; }
+    nav a:hover { color: #00d9ff; }
+
+    .hero {
+      padding: 90px 8% 70px; text-align: center;
+      background: linear-gradient(135deg, #0a0e27 0%, #16213e 60%, #1a2a5e 100%);
+    }
+    .hero h1 { font-size: 46px; font-weight: 800; color: #fff; line-height: 1.2; }
+    .hero h1 span { color: #00d9ff; }
+    .hero p { font-size: 19px; color: #b0b0d0; margin: 18px auto 30px; max-width: 650px; }
+    .hero-btns { display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; }
+
+    .btn {
+      display: inline-block; padding: 13px 32px;
+      background: #00d9ff; color: #0a0e27; text-decoration: none;
+      border-radius: 30px; font-weight: 700; font-size: 15px;
+      transition: all 0.3s;
+    }
+    .btn:hover { background: #00b8d9; transform: translateY(-3px); box-shadow: 0 8px 20px rgba(0,217,255,0.3); }
+    .btn-gold { background: #ffa502; }
+    .btn-gold:hover { background: #e8940b; box-shadow: 0 8px 20px rgba(255,165,2,0.3); }
+
+    .stats { display: flex; justify-content: center; gap: 60px; padding: 45px 8%; flex-wrap: wrap; }
+    .stat { text-align: center; }
+    .stat .num { font-size: 38px; font-weight: 800; color: #00d9ff; }
+    .stat .label { color: #8888aa; font-size: 14px; }
+
+    .section-title { text-align: center; font-size: 32px; font-weight: 700; color: #fff; margin-bottom: 12px; }
+    .section-sub { text-align: center; color: #8888aa; margin-bottom: 45px; font-size: 16px; }
+
+    .services { padding: 70px 8%; background: #0d122e; }
+    .cards { display: flex; gap: 25px; justify-content: center; flex-wrap: wrap; }
+    .card {
+      background: #131936; padding: 35px 28px; border-radius: 16px;
+      width: 270px; text-align: center; border: 1px solid #1f2a55;
+      transition: all 0.3s;
+    }
+    .card:hover { transform: translateY(-10px); border-color: #00d9ff; box-shadow: 0 12px 30px rgba(0,217,255,0.15); }
+    .card .icon { font-size: 42px; margin-bottom: 15px; }
+    .card h3 { color: #fff; font-size: 19px; margin-bottom: 10px; }
+    .card p { color: #9d9dbd; font-size: 14px; margin-bottom: 18px; }
+    .card .price { color: #ffa502; font-weight: 700; font-size: 16px; }
+
+    .process { padding: 70px 8%; }
+    .steps { display: flex; gap: 25px; justify-content: center; flex-wrap: wrap; }
+    .step { width: 260px; text-align: center; padding: 30px 20px; background: #131936; border-radius: 16px; border: 1px solid #1f2a55; }
+    .step .num-badge {
+      width: 50px; height: 50px; background: #00d9ff; color: #0a0e27;
+      border-radius: 50%; display: flex; align-items: center; justify-content: center;
+      font-size: 22px; font-weight: 800; margin: 0 auto 15px;
+    }
+    .step h3 { color: #fff; font-size: 18px; margin-bottom: 8px; }
+    .step p { color: #9d9dbd; font-size: 14px; }
+
+    .portfolio { padding: 70px 8%; background: #0d122e; }
+    .folio-card {
+      background: #131936; border: 1px solid #1f2a55; border-radius: 16px;
+      width: 320px; overflow: hidden; transition: all 0.3s;
+    }
+    .folio-card:hover { transform: translateY(-8px); border-color: #ffa502; }
+    .folio-preview {
+      background: linear-gradient(135deg, #16213e, #1a2a5e);
+      padding: 45px 20px; text-align: center; font-size: 40px;
+    }
+    .folio-info { padding: 22px; text-align: center; }
+    .folio-info h3 { color: #fff; font-size: 18px; }
+    .folio-info p { color: #9d9dbd; font-size: 13px; margin-top: 6px; }
+
+    .cta {
+      padding: 80px 8%; text-align: center;
+      background: linear-gradient(135deg, #16213e, #1a2a5e);
+    }
+    .cta h2 { font-size: 34px; color: #fff; font-weight: 800; }
+    .cta p { color: #b0b0d0; margin: 15px auto 30px; max-width: 550px; }
+
+    footer { padding: 30px 8%; text-align: center; color: #666688; font-size: 14px; border-top: 1px solid #1f2a55; }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="logo">Mustafa <span>Web</span></div>
+    <ul>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#process">Process</a></li>
+      <li><a href="#work">Work</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <section class="hero">
+    <h1>Aapke Business ke liye<br><span>Professional Website</span> banwao!</h1>
+    <p>Choti dukaan ho ya badi company — internet pe hona zaroori hai. Main banata hu fast, sundar aur mobile-friendly websites — wo bhi time pe!</p>
+    <div class="hero-btns">
+      <a href="https://wa.me/923322281507?text=Mujhe%20website%20banwani%20hai" class="btn">🚀 Free Quotation Lo</a>
+      <a href="#work" class="btn btn-gold">Mera Kaam Dekho</a>
+    </div>
+  </section>
+
+  <div class="stats">
+    <div class="stat"><div class="num">10+</div><div class="label">Websites Delivered</div></div>
+    <div class="stat"><div class="num">5+</div><div class="label">Happy Clients</div></div>
+    <div class="stat"><div class="num">3 din</div><div class="label">Fast Delivery</div></div>
+    <div class="stat"><div class="num">100%</div><div class="label">Mobile Friendly</div></div>
+  </div>
+
+  <section class="services" id="services">
+    <h2 class="section-title">Kaisi Website Chahiye?</h2>
+    <p class="section-sub">Har business ke liye perfect solution</p>
+    <div class="cards">
+      <div class="card">
+        <div class="icon">🏪</div>
+        <h3>Business Website</h3>
+        <p>Dukaan, restaurant, clinic — apne business ko online lao, customers khud aayenge.</p>
+        <div class="price">Rs 5,000 se</div>
+      </div>
+      <div class="card">
+        <div class="icon">💼</div>
+        <h3>Portfolio Website</h3>
+        <p>Apna kaam dikhao, CV jaisi website — interview me impress karo.</p>
+        <div class="price">Rs 3,500 se</div>
+      </div>
+      <div class="card">
+        <div class="icon">🛒</div>
+        <h3>Online Store</h3>
+        <p>Products becho internet pe — order buttons, rates, sab kuch ready.</p>
+        <div class="price">Rs 12,000 se</div>
+      </div>
+      <div class="card">
+        <div class="icon">📄</div>
+        <h3>Landing Page</h3>
+        <p>Ek page, ek goal — product launch ya offer ke liye perfect.</p>
+        <div class="price">Rs 2,500 se</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="process" id="process">
+    <h2 class="section-title">Kaam Kaise Hoga?</h2>
+    <p class="section-sub">Sirf 3 easy steps!</p>
+    <div class="steps">
+      <div class="step">
+        <div class="num-badge">1</div>
+        <h3>Message Karo</h3>
+        <p>WhatsApp pe batao kaisi website chahiye — free me quotation milega.</p>
+      </div>
+      <div class="step">
+        <div class="num-badge">2</div>
+        <h3>Design Banao</h3>
+        <p>Main aapko design dikhaunga, pasand aane pe hi aage badhenge.</p>
+      </div>
+      <div class="step">
+        <div class="num-badge">3</div>
+        <h3>Website Live!</h3>
+        <p>3 din me aapki website internet pe live — link sabko share karo!</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="portfolio" id="work">
+    <h2 class="section-title">Mera Kaam</h2>
+    <p class="section-sub">Ye websites maine khud banayi hain — khud check karo!</p>
+    <div class="cards">
+      <div class="folio-card">
+        <div class="folio-preview">🎨</div>
+        <div class="folio-info">
+          <h3>Asra Design</h3>
+          <p>Design services website — dark theme, order buttons, pricing</p>
+          <a href="https://asradesign.vercel.app" target="_blank" style="color:#00d9ff; font-size:14px; text-decoration:none;">🔗 Live Dekho →</a>
+        </div>
+      </div>
+      <div class="folio-card">
+        <div class="folio-preview">🌐</div>
+        <div class="folio-info">
+          <h3>Mustafa Web</h3>
+          <p>Ye jo site dekh rahe ho — ye bhi mera hi kaam hai!</p>
+          <a href="https://mustafaweb.vercel.app" target="_blank" style="color:#00d9ff; font-size:14px; text-decoration:none;">🔗 Live Dekho →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta" id="contact">
+    <h2>Tayyar ho website banwane ke liye?</h2>
+    <p>Abhi WhatsApp pe message karo — 5 minute me quotation aur free consultation milega. Koi advance nahi, pehle design pasand karo!</p>
+    <a href="https://wa.me/923322281507?text=Mujhe%20website%20banwani%20hai" class="btn btn-gold">💬 WhatsApp Pe Baat Karo</a>
+  </section>
+
+  <footer>
+    © 2026 Mustafa Web — Professional Website Development | Karachi, Pakistan
+  </footer>
+
+</body>
+</html>
