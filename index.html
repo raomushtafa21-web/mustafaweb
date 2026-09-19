@@ -86,14 +86,161 @@
     .folio-info h3 { color: #fff; font-size: 18px; }
     .folio-info p { color: #9d9dbd; font-size: 13px; margin-top: 6px; }
 
-    .cta {
-      padding: 80px 8%; text-align: center;
-      background: linear-gradient(135deg, #16213e, #1a2a5e);
+    /* ============ PAYMENT STYLES ============ */
+    .payment { padding: 70px 8%; background: #0d122e; }
+    .pay-cards { display: flex; gap: 25px; justify-content: center; flex-wrap: wrap; }
+    .pay-card {
+      background: #131936; border: 1px solid #1f2a55; border-radius: 16px;
+      padding: 30px; width: 300px; text-align: center; transition: all 0.3s;
     }
-    .cta h2 { font-size: 34px; color: #fff; font-weight: 800; }
-    .cta p { color: #b0b0d0; margin: 15px auto 30px; max-width: 550px; }
+    .pay-card:hover { border-color: #4ade80; transform: translateY(-6px); }
+    .pay-card .pay-icon { font-size: 40px; margin-bottom: 12px; }
+    .pay-card h3 { color: #fff; font-size: 19px; margin-bottom: 8px; }
+    .pay-card .pay-num {
+      background: #1f2a55; color: #00d9ff; font-weight: 700;
+      padding: 10px; border-radius: 10px; font-size: 17px;
+      margin: 12px 0; letter-spacing: 1px;
+    }
+    .pay-card p { color: #9d9dbd; font-size: 13px; }
+    .pay-note {
+      max-width: 700px; margin: 35px auto 0; text-align: center;
+      background: rgba(255,165,2,0.08); border: 1px solid #ffa502;
+      border-radius: 14px; padding: 20px 25px;
+    }
+    .pay-note p { color: #e0d0b0; font-size: 14.5px; }
+    .pay-note strong { color: #ffa502; }
+
+    /* ============ CONTACT + FORM ============ */
+    .contact { padding: 70px 8%; }
+    .contact-wrapper { display: flex; gap: 40px; justify-content: center; flex-wrap: wrap; }
+    .contact-info { flex: 1; min-width: 260px; max-width: 380px; }
+    .contact-info .c-item {
+      display: flex; align-items: center; gap: 16px;
+      background: #131936; border: 1px solid #1f2a55;
+      padding: 18px 22px; border-radius: 14px; margin-bottom: 16px;
+      transition: all 0.3s;
+    }
+    .contact-info .c-item:hover { border-color: #00d9ff; transform: translateX(6px); }
+    .c-item .c-icon {
+      width: 48px; height: 48px; background: rgba(0,217,255,0.1);
+      border-radius: 12px; display: flex; align-items: center; justify-content: center;
+      font-size: 22px; flex-shrink: 0;
+    }
+    .c-item .c-label { color: #8888aa; font-size: 12px; }
+    .c-item .c-value { color: #fff; font-weight: 600; font-size: 15px; }
+    .c-item a { text-decoration: none; color: inherit; }
+
+    .contact-form { flex: 1; min-width: 300px; max-width: 480px; }
+    .contact-form form {
+      background: #131936; border: 1px solid #1f2a55;
+      padding: 30px; border-radius: 16px;
+    }
+    .contact-form h3 { color: #fff; font-size: 20px; margin-bottom: 20px; }
+    .contact-form label { color: #9d9dbd; font-size: 13px; display: block; margin-bottom: 6px; }
+    .contact-form input, .contact-form select, .contact-form textarea {
+      width: 100%; background: #1f2a55; border: 1px solid #2a3a6e;
+      color: #fff; padding: 12px 16px; border-radius: 10px;
+      font-family: 'Poppins', sans-serif; font-size: 14px;
+      margin-bottom: 18px; outline: none; transition: border 0.3s;
+    }
+    .contact-form input:focus, .contact-form select:focus, .contact-form textarea:focus { border-color: #00d9ff; }
+    .contact-form select { cursor: pointer; }
+    .contact-form textarea { resize: vertical; min-height: 90px; }
+
+    .order-tabs { display: flex; gap: 12px; justify-content: center; margin-bottom: 25px; flex-wrap: wrap; }
+    .order-tab {
+      background: #131936; border: 2px solid #1f2a55; color: #9d9dbd;
+      padding: 12px 26px; border-radius: 30px; cursor: pointer;
+      font-family: 'Poppins', sans-serif; font-weight: 600; font-size: 14px;
+      transition: all 0.3s;
+    }
+    .order-tab.active, .order-tab:hover { border-color: #00d9ff; color: #00d9ff; }
 
     footer { padding: 30px 8%; text-align: center; color: #666688; font-size: 14px; border-top: 1px solid #1f2a55; }
+
+    /* ============ CHATBOT STYLES ============ */
+    .chat-toggle {
+      position: fixed; bottom: 25px; right: 25px;
+      width: 62px; height: 62px; border-radius: 50%;
+      background: #00d9ff; border: none; font-size: 28px;
+      cursor: pointer; z-index: 999;
+      box-shadow: 0 6px 20px rgba(0,217,255,0.4);
+      transition: all 0.3s;
+    }
+    .chat-toggle:hover { transform: scale(1.1); }
+
+    .chat-box {
+      position: fixed; bottom: 100px; right: 25px;
+      width: 340px; height: 480px; max-width: calc(100vw - 40px);
+      background: #131936; border: 1px solid #1f2a55; border-radius: 18px;
+      display: none; flex-direction: column; overflow: hidden; z-index: 999;
+      box-shadow: 0 15px 40px rgba(0,0,0,0.6);
+    }
+    .chat-box.open { display: flex; }
+
+    .chat-header {
+      background: linear-gradient(135deg, #16213e, #1a2a5e);
+      padding: 15px 18px; display: flex; align-items: center; gap: 12px;
+    }
+    .bot-avatar {
+      width: 40px; height: 40px; background: #00d9ff; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center; font-size: 20px;
+    }
+    .chat-header .bot-name { color: #fff; font-weight: 700; font-size: 15px; }
+    .chat-header .bot-status { color: #4ade80; font-size: 11px; }
+    .chat-header .status-dot {
+      display: inline-block; width: 8px; height: 8px; background: #4ade80;
+      border-radius: 50%; margin-right: 4px;
+    }
+    .chat-close {
+      margin-left: auto; background: none; border: none; color: #8888aa;
+      font-size: 22px; cursor: pointer;
+    }
+    .chat-close:hover { color: #fff; }
+
+    .chat-body {
+      flex: 1; padding: 15px; overflow-y: auto;
+      display: flex; flex-direction: column; gap: 10px;
+    }
+    .msg {
+      max-width: 80%; padding: 10px 14px; border-radius: 14px;
+      font-size: 13.5px; line-height: 1.5;
+    }
+    .msg.bot {
+      background: #1f2a55; color: #e0e0e0;
+      align-self: flex-start; border-bottom-left-radius: 4px;
+    }
+    .msg.user {
+      background: #00d9ff; color: #0a0e27; font-weight: 500;
+      align-self: flex-end; border-bottom-right-radius: 4px;
+    }
+
+    .chips {
+      display: flex; gap: 8px; padding: 10px 15px; flex-wrap: wrap;
+      border-top: 1px solid #1f2a55;
+    }
+    .chips button {
+      background: #1f2a55; color: #00d9ff; border: 1px solid #00d9ff;
+      padding: 6px 14px; border-radius: 20px; font-size: 12px;
+      cursor: pointer; font-family: 'Poppins', sans-serif; font-weight: 600;
+    }
+    .chips button:hover { background: #00d9ff; color: #0a0e27; }
+
+    .chat-input-area {
+      display: flex; gap: 10px; padding: 12px 15px; border-top: 1px solid #1f2a55;
+    }
+    .chat-input-area input {
+      flex: 1; background: #1f2a55; border: 1px solid #2a3a6e;
+      color: #fff; padding: 10px 14px; border-radius: 25px;
+      font-family: 'Poppins', sans-serif; font-size: 13px; outline: none;
+    }
+    .chat-input-area input:focus { border-color: #00d9ff; }
+    .chat-input-area button {
+      background: #00d9ff; border: none; color: #0a0e27;
+      width: 42px; height: 42px; border-radius: 50%;
+      font-size: 17px; cursor: pointer; font-weight: 800;
+    }
+    .chat-input-area button:hover { background: #ffa502; }
   </style>
 </head>
 <body>
@@ -104,6 +251,7 @@
       <li><a href="#services">Services</a></li>
       <li><a href="#process">Process</a></li>
       <li><a href="#work">Work</a></li>
+      <li><a href="#order">Order</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
   </nav>
@@ -112,7 +260,7 @@
     <h1>Aapke Business ke liye<br><span>Professional Website</span> banwao!</h1>
     <p>Choti dukaan ho ya badi company — internet pe hona zaroori hai. Main banata hu fast, sundar aur mobile-friendly websites — wo bhi time pe!</p>
     <div class="hero-btns">
-      <a href="https://wa.me/923322281507?text=Mujhe%20website%20banwani%20hai" class="btn">🚀 Free Quotation Lo</a>
+      <a href="#order" class="btn">🚀 Abhi Order Karo</a>
       <a href="#work" class="btn btn-gold">Mera Kaam Dekho</a>
     </div>
   </section>
@@ -161,18 +309,18 @@
     <div class="steps">
       <div class="step">
         <div class="num-badge">1</div>
-        <h3>Message Karo</h3>
-        <p>WhatsApp pe batao kaisi website chahiye — free me quotation milega.</p>
+        <h3>Order Karo</h3>
+        <p>Form bharo ya WhatsApp karo — batao kaisi website chahiye.</p>
       </div>
       <div class="step">
         <div class="num-badge">2</div>
-        <h3>Design Banao</h3>
-        <p>Main aapko design dikhaunga, pasand aane pe hi aage badhenge.</p>
+        <h3>50% Advance</h3>
+        <p>JazzCash/Easypaisa se advance do — design kaam shuru!</p>
       </div>
       <div class="step">
         <div class="num-badge">3</div>
         <h3>Website Live!</h3>
-        <p>3 din me aapki website internet pe live — link sabko share karo!</p>
+        <p>Design pasand hone pe baaki payment — website aapki!</p>
       </div>
     </div>
   </section>
@@ -200,15 +348,246 @@
     </div>
   </section>
 
-  <section class="cta" id="contact">
-    <h2>Tayyar ho website banwane ke liye?</h2>
-    <p>Abhi WhatsApp pe message karo — 5 minute me quotation aur free consultation milega. Koi advance nahi, pehle design pasand karo!</p>
-    <a href="https://wa.me/923322281507?text=Mujhe%20website%20banwani%20hai" class="btn btn-gold">💬 WhatsApp Pe Baat Karo</a>
+  <!-- ============ PAYMENT SECTION ============ -->
+  <section class="payment" id="payment">
+    <h2 class="section-title">💳 Payment Kaise Karein?</h2>
+    <p class="section-sub">50% advance — baaki delivery ke baad. Simple!</p>
+    <div class="pay-cards">
+      <div class="pay-card">
+        <div class="pay-icon">💚</div>
+        <h3>Easypaisa</h3>
+        <div class="pay-num">0332-2281507</div>
+        <p>Account Title: [Apna Naam Likho]</p>
+      </div>
+      <div class="pay-card">
+        <div class="pay-icon">❤️</div>
+        <h3>JazzCash</h3>
+        <div class="pay-num">0332-2281507</div>
+        <p>Account Title: [Apna Naam Likho]</p>
+      </div>
+      <div class="pay-card">
+        <div class="pay-icon">🏦</div>
+        <h3>Bank Transfer</h3>
+        <div class="pay-num">[Bank Number]</div>
+        <p>[Bank ka naam + Account Title]</p>
+      </div>
+    </div>
+    <div class="pay-note">
+      <p><strong>📌 Payment Process:</strong> Order confirm hone ke baad 50% advance lena hai.
+      Advance milne ke baad design kaam shuru. Design approve hone pe baaki 50% —
+      phir website live! <strong>Screenshot payment ka WhatsApp pe zaroor bhejna!</strong></p>
+    </div>
+  </section>
+
+  <!-- ============ ORDER SECTION ============ -->
+  <section class="contact" id="order">
+    <h2 class="section-title">🚀 Order Karo</h2>
+    <p class="section-sub">Do tareeke — jo aasan lage!</p>
+
+    <div class="order-tabs">
+      <button class="order-tab active" id="tab-form" onclick="switchTab('form')">📝 Form Bharo</button>
+      <button class="order-tab" id="tab-wa" onclick="switchTab('wa')">💬 WhatsApp Karo</button>
+    </div>
+
+    <div id="order-form-wrap">
+      <div class="contact-form" style="margin: 0 auto;">
+        <form id="orderForm" action="https://formspree.io/f/mzezdprz" method="POST">
+          <h3>📝 Order Form</h3>
+          <label>Aapka Naam *</label>
+          <input type="text" name="naam" placeholder="Asra khalil" required>
+          <label>Mobile Number *</label>
+          <input type="tel" name="number" placeholder="03322281507" required>
+          <label>Kaisi Website Chahiye? *</label>
+          <select name="website_type">
+            <option>Business Website — Rs 2,000 se</option>
+            <option>Portfolio Website — Rs 1,500 se</option>
+            <option>Online Store — Rs 5,000 se</option>
+            <option>Landing Page — Rs 2,500 se</option>
+            <option>Kuch aur hai</option>
+          </select>
+          <label>Business ka Naam / Detail</label>
+          <textarea name="details" placeholder="Apne business ke bare me likho — kya bechte ho, kya pages chahiye, color pasand..."></textarea>
+          <button type="submit" class="btn" style="border:none; cursor:pointer; width:100%; text-align:center;">🚀 Order Submit Karo</button>
+          <p style="color:#666688; font-size:12px; text-align:center; margin-top:12px;">Submit karte hi order seedha email pe aayega — 24 ghante me reply milega!</p>
+        </form>
+      </div>
+    </div>
+
+    <div id="order-wa-wrap" style="display:none;">
+      <div class="contact-form" style="margin: 0 auto; text-align:center;">
+        <div style="background:#131936; border:1px solid #1f2a55; padding:40px 30px; border-radius:16px;">
+          <div style="font-size:50px; margin-bottom:15px;">💬</div>
+          <h3 style="color:#fff; margin-bottom:10px;">Direct WhatsApp</h3>
+          <p style="color:#9d9dbd; font-size:14px; margin-bottom:25px;">Jaldi baat karni hai? Seedha WhatsApp pe message karo — 5 minute me reply!</p>
+          <a href="https://wa.me/923322281507?text=Mujhe%20website%20banwani%20hai" class="btn btn-gold">💬 WhatsApp Pe Baat Karo</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact" id="contact" style="padding-top: 30px; background: #0a0e27;">
+    <h2 class="section-title">Contact Me</h2>
+    <div class="contact-wrapper">
+
+      <div class="contact-info">
+        <div class="c-item">
+          <div class="c-icon">📱</div>
+          <div>
+            <div class="c-label">WhatsApp / Call</div>
+            <a href="https://wa.me/923322281507" target="_blank"><div class="c-value">0332 2281507</div></a>
+          </div>
+        </div>
+        <div class="c-item">
+          <div class="c-icon">⏰</div>
+          <div>
+            <div class="c-label">Timing</div>
+            <div class="c-value">Roz Subah 10 baje — Raat 10 baje</div>
+          </div>
+        </div>
+        <div class="c-item">
+          <div class="c-icon">📍</div>
+          <div>
+            <div class="c-label">Location</div>
+            <div class="c-value">Karachi, Pakistan</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
   </section>
 
   <footer>
     © 2026 Mustafa Web — Professional Website Development | Karachi, Pakistan
   </footer>
+
+  <!-- ============ CHATBOT ============ -->
+  <button class="chat-toggle" id="chat-toggle">💬</button>
+
+  <div class="chat-box" id="chat-box">
+    <div class="chat-header">
+      <div class="bot-avatar">🤖</div>
+      <div>
+        <div class="bot-name">Mustafa Web Bot</div>
+        <div class="bot-status"><span class="status-dot"></span>Online — abhi jawab dega!</div>
+      </div>
+      <button class="chat-close" id="chat-close">×</button>
+    </div>
+    <div class="chat-body" id="chat-body"></div>
+    <div class="chips">
+      <button onclick="quickAsk('Price kitni hai?')">💰 Rates</button>
+      <button onclick="quickAsk('Kitne din lagenge?')">⏰ Time</button>
+      <button onclick="quickAsk('Payment kaise kare')">💳 Payment</button>
+      <button onclick="quickAsk('WhatsApp number do')">📱 Contact</button>
+    </div>
+    <div class="chat-input-area">
+      <input type="text" id="chat-input" placeholder="Apna sawal likho...">
+      <button id="chat-send">➤</button>
+    </div>
+  </div>
+
+  <script>
+    var chatToggle = document.getElementById('chat-toggle');
+    var chatBox = document.getElementById('chat-box');
+    var chatClose = document.getElementById('chat-close');
+    var chatBody = document.getElementById('chat-body');
+    var chatInput = document.getElementById('chat-input');
+    var chatSend = document.getElementById('chat-send');
+    var greeted = false;
+
+    var responses = [
+      { keywords: ["salam", "assalam", "hello", "hi", "hey", "aoa"],
+        reply: "Walaikum Assalam! 👋 Main Mustafa Web ka chatbot hu. Puchho — rates, payment, delivery — kuch bhi!" },
+      { keywords: ["price", "rate", "kitna", "kitni", "paise", "cost", "charge"],
+        reply: "💰 Rates: Landing Page Rs 2,500 | Portfolio Rs 3,500 | Business Rs 5,000 | Online Store Rs 12,000. Order form bharo ya WhatsApp karo!" },
+      { keywords: ["din", "time", "kab", "kitne din", "delivery", "jaldi"],
+        reply: "⚡ Sirf 3 din me website live! Landing page to 1-2 din me ready!" },
+      { keywords: ["sample", "kaam", "portfolio", "example", "dekha"],
+        reply: "🎨 'Mera Kaam' section me samples hain! asradesign.vercel.app bhi dekho!" },
+      { keywords: ["whatsapp", "number", "contact", "phone", "call", "baat"],
+        reply: "📱 WhatsApp: 0332 2281507 — ya order form bharo, email pe order aayega!" },
+      { keywords: ["payment", "advance", "paisa", "jazzcash", "easypaisa", "bank"],
+        reply: "💳 50% advance, baaki delivery pe! Easypaisa/JazzCash: 0332-2281507. Payment section me details hain. Screenshot bhejna mat bhulna!" },
+      { keywords: ["order", "form", "kaise order"],
+        reply: "🚀 'Order' section me form bharo — ya WhatsApp button! Dono kaam karte hain!" },
+      { keywords: ["mobile", "phone pe", "android"],
+        reply: "✅ Saari websites mobile-friendly — phone, tablet, sab pe perfect!" },
+      { keywords: ["update", "change", "badalna"],
+        reply: "🔄 Chhote changes FREE hain! Baad me bhi sasta rate pe updates." },
+      { keywords: ["shukriya", "thanks", "thank you", "jazak"],
+        reply: "Koi baat nahi! 😊 Order ke liye neeche form hai!" },
+      { keywords: ["hosting", "domain", ".com", "live kaise"],
+        reply: "🌐 FREE hosting ke saath website milti hai! .com chahiye toh wo bhi lagwa denge!" },
+      { keywords: ["kaun", "tum kaun", "kya kar"],
+        reply: "🤖 Main Mustafa Web ka bot hu! Rates, payment, process — sab bata sakta hu!" }
+    ];
+
+    function addMsg(text, who) {
+      var div = document.createElement('div');
+      div.className = 'msg ' + who;
+      div.textContent = text;
+      chatBody.appendChild(div);
+      chatBody.scrollTop = chatBody.scrollHeight;
+    }
+
+    function botReply(userText) {
+      var text = userText.toLowerCase();
+      for (var i = 0; i < responses.length; i++) {
+        for (var j = 0; j < responses[i].keywords.length; j++) {
+          if (text.indexOf(responses[i].keywords[j]) !== -1) {
+            return responses[i].reply;
+          }
+        }
+      }
+      return "Ye sawal mere paas nahi hai 😅 WhatsApp karo — 0332 2281507 pe turant reply milega! 📱";
+    }
+
+    function sendMsg() {
+      var text = chatInput.value.trim();
+      if (!text) return;
+      addMsg(text, 'user');
+      chatInput.value = '';
+      setTimeout(function() { addMsg(botReply(text), 'bot'); }, 700);
+    }
+
+    function quickAsk(q) {
+      addMsg(q, 'user');
+      setTimeout(function() { addMsg(botReply(q), 'bot'); }, 700);
+    }
+
+    chatToggle.onclick = function() {
+      chatBox.classList.toggle('open');
+      if (!greeted && chatBox.classList.contains('open')) {
+        greeted = true;
+        setTimeout(function() {
+          addMsg("Assalam-o-Alaikum! 👋 Main Mustafa Web ka bot hu. Rates, payment, delivery — kuch bhi puchho!", 'bot');
+        }, 400);
+      }
+    };
+    chatClose.onclick = function() { chatBox.classList.remove('open'); };
+    chatSend.onclick = sendMsg;
+    chatInput.addEventListener('keypress', function(e) {
+      if (e.key === 'Enter') sendMsg();
+    });
+
+    // ============ ORDER TABS SWITCH ============
+    function switchTab(tab) {
+      var tabForm = document.getElementById('tab-form');
+      var tabWa = document.getElementById('tab-wa');
+      var wrapForm = document.getElementById('order-form-wrap');
+      var wrapWa = document.getElementById('order-wa-wrap');
+      if (tab === 'form') {
+        tabForm.classList.add('active');
+        tabWa.classList.remove('active');
+        wrapForm.style.display = 'block';
+        wrapWa.style.display = 'none';
+      } else {
+        tabWa.classList.add('active');
+        tabForm.classList.remove('active');
+        wrapWa.style.display = 'block';
+        wrapForm.style.display = 'none';
+      }
+    }
+  </script>
 
 </body>
 </html>
