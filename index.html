@@ -86,12 +86,11 @@
     .folio-info h3 { color: #fff; font-size: 18px; }
     .folio-info p { color: #9d9dbd; font-size: 13px; margin-top: 6px; }
 
-    /* ============ PAYMENT STYLES ============ */
     .payment { padding: 70px 8%; background: #0d122e; }
     .pay-cards { display: flex; gap: 25px; justify-content: center; flex-wrap: wrap; }
     .pay-card {
       background: #131936; border: 1px solid #1f2a55; border-radius: 16px;
-      padding: 30px; width: 300px; text-align: center; transition: all 0.3s;
+      padding: 30px; width: 320px; text-align: center; transition: all 0.3s;
     }
     .pay-card:hover { border-color: #4ade80; transform: translateY(-6px); }
     .pay-card .pay-icon { font-size: 40px; margin-bottom: 12px; }
@@ -110,7 +109,6 @@
     .pay-note p { color: #e0d0b0; font-size: 14.5px; }
     .pay-note strong { color: #ffa502; }
 
-    /* ============ CONTACT + FORM ============ */
     .contact { padding: 70px 8%; }
     .contact-wrapper { display: flex; gap: 40px; justify-content: center; flex-wrap: wrap; }
     .contact-info { flex: 1; min-width: 260px; max-width: 380px; }
@@ -162,16 +160,16 @@
     .chat-toggle {
       position: fixed; bottom: 25px; right: 25px;
       width: 62px; height: 62px; border-radius: 50%;
-      background: #00d9ff; border: none; font-size: 28px;
+      background: #00d9ff; border: none; font-size: 26px;
       cursor: pointer; z-index: 999;
       box-shadow: 0 6px 20px rgba(0,217,255,0.4);
       transition: all 0.3s;
     }
-    .chat-toggle:hover { transform: scale(1.1); }
+    .chat-toggle:hover { transform: scale(1.1) rotate(10deg); }
 
     .chat-box {
       position: fixed; bottom: 100px; right: 25px;
-      width: 340px; height: 480px; max-width: calc(100vw - 40px);
+      width: 350px; height: 520px; max-width: calc(100vw - 40px);
       background: #131936; border: 1px solid #1f2a55; border-radius: 18px;
       display: none; flex-direction: column; overflow: hidden; z-index: 999;
       box-shadow: 0 15px 40px rgba(0,0,0,0.6);
@@ -183,8 +181,13 @@
       padding: 15px 18px; display: flex; align-items: center; gap: 12px;
     }
     .bot-avatar {
-      width: 40px; height: 40px; background: #00d9ff; border-radius: 50%;
-      display: flex; align-items: center; justify-content: center; font-size: 20px;
+      width: 42px; height: 42px; background: linear-gradient(135deg, #00d9ff, #0088cc);
+      border-radius: 50%; display: flex; align-items: center; justify-content: center;
+      font-size: 20px; animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(0,217,255,0.4); }
+      50% { box-shadow: 0 0 0 8px rgba(0,217,255,0); }
     }
     .chat-header .bot-name { color: #fff; font-weight: 700; font-size: 15px; }
     .chat-header .bot-status { color: #4ade80; font-size: 11px; }
@@ -203,8 +206,12 @@
       display: flex; flex-direction: column; gap: 10px;
     }
     .msg {
-      max-width: 80%; padding: 10px 14px; border-radius: 14px;
-      font-size: 13.5px; line-height: 1.5;
+      max-width: 82%; padding: 10px 14px; border-radius: 14px;
+      font-size: 13.5px; line-height: 1.55; white-space: pre-line;
+      position: relative;
+    }
+    .msg .time {
+      display: block; font-size: 9.5px; opacity: 0.55; margin-top: 4px; text-align: right;
     }
     .msg.bot {
       background: #1f2a55; color: #e0e0e0;
@@ -213,6 +220,19 @@
     .msg.user {
       background: #00d9ff; color: #0a0e27; font-weight: 500;
       align-self: flex-end; border-bottom-right-radius: 4px;
+    }
+    .msg.user .time { color: #0a0e27; }
+
+    .typing { display: flex; gap: 5px; align-items: center; padding: 14px 16px; }
+    .typing span {
+      width: 7px; height: 7px; background: #8888aa; border-radius: 50%;
+      animation: bounce 1.2s infinite;
+    }
+    .typing span:nth-child(2) { animation-delay: 0.2s; }
+    .typing span:nth-child(3) { animation-delay: 0.4s; }
+    @keyframes bounce {
+      0%, 60%, 100% { transform: translateY(0); opacity: 0.4; }
+      30% { transform: translateY(-6px); opacity: 1; }
     }
 
     .chips {
@@ -223,8 +243,9 @@
       background: #1f2a55; color: #00d9ff; border: 1px solid #00d9ff;
       padding: 6px 14px; border-radius: 20px; font-size: 12px;
       cursor: pointer; font-family: 'Poppins', sans-serif; font-weight: 600;
+      transition: all 0.2s;
     }
-    .chips button:hover { background: #00d9ff; color: #0a0e27; }
+    .chips button:hover { background: #00d9ff; color: #0a0e27; transform: translateY(-2px); }
 
     .chat-input-area {
       display: flex; gap: 10px; padding: 12px 15px; border-top: 1px solid #1f2a55;
@@ -348,7 +369,6 @@
     </div>
   </section>
 
-  <!-- ============ PAYMENT SECTION ============ -->
   <section class="payment" id="payment">
     <h2 class="section-title">💳 Payment Kaise Karein?</h2>
     <p class="section-sub">50% advance — baaki delivery ke baad. Simple!</p>
@@ -357,29 +377,16 @@
         <div class="pay-icon">💚</div>
         <h3>Easypaisa</h3>
         <div class="pay-num">0332-2281507</div>
-        <p>Account Title: [Apna Naam Likho]</p>
-      </div>
-      <div class="pay-card">
-        <div class="pay-icon">❤️</div>
-        <h3>JazzCash</h3>
-        <div class="pay-num">0332-2281507</div>
-        <p>Account Title: [Apna Naam Likho]</p>
-      </div>
-      <div class="pay-card">
-        <div class="pay-icon">🏦</div>
-        <h3>Bank Transfer</h3>
-        <div class="pay-num">[Bank Number]</div>
-        <p>[Bank ka naam + Account Title]</p>
+        <p>Account Title: [Apna Naam]</p>
       </div>
     </div>
     <div class="pay-note">
-      <p><strong>📌 Payment Process:</strong> Order confirm hone ke baad 50% advance lena hai.
+      <p><strong>📌 Payment Process:</strong> Order confirm hone ke baad 50% advance Easypaisa par karna hai.
       Advance milne ke baad design kaam shuru. Design approve hone pe baaki 50% —
-      phir website live! <strong>Screenshot payment ka WhatsApp pe zaroor bhejna!</strong></p>
+      phir website live! <strong>Payment ka screenshot WhatsApp pe zaroor bhejna!</strong></p>
     </div>
   </section>
 
-  <!-- ============ ORDER SECTION ============ -->
   <section class="contact" id="order">
     <h2 class="section-title">🚀 Order Karo</h2>
     <p class="section-sub">Do tareeke — jo aasan lage!</p>
@@ -391,12 +398,12 @@
 
     <div id="order-form-wrap">
       <div class="contact-form" style="margin: 0 auto;">
-        <form id="orderForm" action="https://formspree.io/f/mzezdprz" method="POST">
+        <form id="orderForm" action="YAHAN_APNI_FORMSPREE_ID_DALO" method="POST">
           <h3>📝 Order Form</h3>
           <label>Aapka Naam *</label>
-          <input type="text" name="naam" placeholder="Asra khalil likho" required>
+          <input type="text" name="naam" placeholder="Apna naam likho" required>
           <label>Mobile Number *</label>
-          <input type="tel" name="number" placeholder="03322281507" required>
+          <input type="tel" name="number" placeholder="03XX-XXXXXXX" required>
           <label>Kaisi Website Chahiye? *</label>
           <select name="website_type">
             <option>Business Website — Rs 2,000 se</option>
@@ -428,7 +435,6 @@
   <section class="contact" id="contact" style="padding-top: 30px; background: #0a0e27;">
     <h2 class="section-title">Contact Me</h2>
     <div class="contact-wrapper">
-
       <div class="contact-info">
         <div class="c-item">
           <div class="c-icon">📱</div>
@@ -452,7 +458,6 @@
           </div>
         </div>
       </div>
-
     </div>
   </section>
 
@@ -460,24 +465,25 @@
     © 2026 Mustafa Web — Professional Website Development | Karachi, Pakistan
   </footer>
 
-  <!-- ============ CHATBOT ============ -->
-  <button class="chat-toggle" id="chat-toggle">💬</button>
+  <!-- ============ AI CHATBOT v2.0 ============ -->
+  <button class="chat-toggle" id="chat-toggle">🤖</button>
 
   <div class="chat-box" id="chat-box">
     <div class="chat-header">
-      <div class="bot-avatar">🤖</div>
+      <div class="bot-avatar">🧠</div>
       <div>
-        <div class="bot-name">Mustafa Web Bot</div>
-        <div class="bot-status"><span class="status-dot"></span>Online — abhi jawab dega!</div>
+        <div class="bot-name">Mustafa Bot <span style="color:#ffa502; font-size:11px;">v2.0</span></div>
+        <div class="bot-status"><span class="status-dot"></span>AI Online — apna dimag chal raha hai!</div>
       </div>
       <button class="chat-close" id="chat-close">×</button>
     </div>
     <div class="chat-body" id="chat-body"></div>
     <div class="chips">
-      <button onclick="quickAsk('Price kitni hai?')">💰 Rates</button>
-      <button onclick="quickAsk('Kitne din lagenge?')">⏰ Time</button>
-      <button onclick="quickAsk('Payment kaise kare')">💳 Payment</button>
-      <button onclick="quickAsk('WhatsApp number do')">📱 Contact</button>
+      <button onclick="quickAsk('rate kitna hai')">💰 Rates</button>
+      <button onclick="quickAsk('advance calculator')">🧮 Advance</button>
+      <button onclick="quickAsk('kitne din lagenge')">⏰ Time</button>
+      <button onclick="quickAsk('payment kaise kare')">💳 Payment</button>
+      <button onclick="quickAsk('joke sunao')">😂 Joke</button>
     </div>
     <div class="chat-input-area">
       <input type="text" id="chat-input" placeholder="Apna sawal likho...">
@@ -492,53 +498,240 @@
     var chatBody = document.getElementById('chat-body');
     var chatInput = document.getElementById('chat-input');
     var chatSend = document.getElementById('chat-send');
+
+    // ================= BOT BRAIN v2.0 =================
+    var userName = localStorage.getItem('mw_name') || '';
+    var pendingName = false;
     var greeted = false;
 
-    var responses = [
-      { keywords: ["salam", "assalam", "hello", "hi", "hey", "aoa"],
-        reply: "Walaikum Assalam! 👋 Main Mustafa Web ka chatbot hu. Puchho — rates, payment, delivery — kuch bhi!" },
-      { keywords: ["price", "rate", "kitna", "kitni", "paise", "cost", "charge"],
-        reply: "💰 Rates: Landing Page Rs 2,500 | Portfolio Rs 1,500 | Business Rs 2,000 | Online Store Rs 5,000. Order form bharo ya WhatsApp karo!" },
-      { keywords: ["din", "time", "kab", "kitne din", "delivery", "jaldi"],
-        reply: "⚡ Sirf 3 din me website live! Landing page to 1-2 din me ready!" },
-      { keywords: ["sample", "kaam", "portfolio", "example", "dekha"],
-        reply: "🎨 'Mera Kaam' section me samples hain! asradesign.vercel.app bhi dekho!" },
-      { keywords: ["whatsapp", "number", "contact", "phone", "call", "baat"],
-        reply: "📱 WhatsApp: 0332 2281507 — ya order form bharo, email pe order aayega!" },
-      { keywords: ["payment", "advance", "paisa", "easypaisa", "bank"],
-        reply: "💳 50% advance, baaki delivery pe! Easypaisa: 0332-2281507. Payment section me details hain. Screenshot bhejna mat bhulna!" },
-      { keywords: ["order", "form", "kaise order"],
-        reply: "🚀 'Order' section me form bharo — ya WhatsApp button! Dono kaam karte hain!" },
-      { keywords: ["mobile", "phone pe", "android"],
-        reply: "✅ Saari websites mobile-friendly — phone, tablet, sab pe perfect!" },
-      { keywords: ["update", "change", "badalna"],
-        reply: "🔄 Chhote changes FREE hain! Baad me bhi sasta rate pe updates." },
-      { keywords: ["shukriya", "thanks", "thank you", "jazak"],
-        reply: "Koi baat nahi! 😊 Order ke liye neeche form hai!" },
-      { keywords: ["hosting", "domain", ".com", "live kaise"],
-        reply: "🌐 FREE hosting ke saath website milti hai! .com chahiye toh wo bhi lagwa denge!" },
-      { keywords: ["kaun", "tum kaun", "kya kar"],
-        reply: "🤖 Main Mustafa Web ka bot hu! Rates, payment, process — sab bata sakta hu!" }
+    var rates = { landing: 2500, portfolio: 1500, business: 2000, store: 5000 };
+
+    var brain = [
+      { keys: ['salam','assalam','hello','hi','hey','aoa','namaste','good morning','good evening','salaam'],
+        replies: [
+          "Walaikum Assalam{name}! 👋 Kaise ho? Batao — rates, advance, delivery — jo puchna hai pucho!",
+          "Walaikum Assalam{name}! 😄 Swagat hai! Aaj website banwane ka irada hai kya?",
+          "Hey{name}! 🤗 Aa gaye tum! Chalo shuru karte hain — kya janna chahte ho?"
+        ] },
+      { keys: ['kaise ho','kya haal','how are you','kaisa hai tu','kaisay ho'],
+        replies: [
+          "Main ekdum mast hu{name}! 🤖 Mera dimag aaj kal tez chal raha hai — pucho jo puchna hai!",
+          "Bas aapke sawalon ka intezaar tha{name}! 😄 Bolo, kya jaanna hai?"
+        ] },
+      { keys: ['rate','price','kitna','kitni','paise','cost','charge','paisa kitna','taqriban','quotation'],
+        replies: [
+          "💰 Rates{name}:\n📄 Landing Page — Rs 2,500\n💼 Portfolio — Rs 1,500\n🏪 Business — Rs 5,000\n🛒 Online Store — Rs 12,000\n\nAdvance ka hisaab bhi kar sakta hu — bas service ka naam bolo!",
+          "Ye rahi price list{name}! 🧾\n🛒 Store: Rs 5,000 | 🏪 Business: Rs 2,000 | 💼 Portfolio: Rs 3,500 | 📄 Landing: Rs 2,500\n\n🧮 Advance calculator bhi hai — 'business advance' likho!"
+        ] },
+      { keys: ['din','time','kab','delivery','jaldi','kitne din','kaab tak'],
+        replies: [
+          "⚡ Speed ka raaz{name}:\n📄 Landing Page — 1-2 din\n💼 Portfolio — 2 din\n🏪 Business — 3 din\n🛒 Store — 4-5 din\n\nFast delivery, koi bahana nahi!",
+          "Sirf 3 din me website aapki{name}! 🚀 Landing page to 1-2 din me ready — WhatsApp pe confirm karo aur timer shuru!"
+        ] },
+      { keys: ['sample','kaam','portfolio dekho','example','work'],
+        replies: [
+          "🎨 Mera kaam dekho{name}! Neeche 'Mera Kaam' section hai — ya seedha kholo: asradesign.vercel.app\nYe site jaise dekh rahe ho, ye bhi mera hi banaya hua hai! 😎",
+          "Samples to hamare specialty hain{name}! 💪 Neeche scroll karo — 'Mera Kaam' me live links hain. Khud check karo, phir decide karo!"
+        ] },
+      { keys: ['whatsapp','number','contact','phone','call','baat karni'],
+        replies: [
+          "📱 WhatsApp: 0332 2281507{name}!\nYa neeche Order Form bharo — order seedha email pe chala jayega. Dono kaam karte hain!",
+          "Contact chahiye{name}? Ye lo: 📱 0332 2281507 (WhatsApp + Call)\n⏰ Roz 10 baje subah se 10 baje raat tak available!"
+        ] },
+      { keys: ['payment','advance kaise','easypaisa','jazzcash','bank','paisa kaise'],
+        replies: [
+          "💳 Payment simple hai{name}:\n💚 Easypaisa: 0332-2281507\n📌 50% advance — baaki delivery pe!\nPayment ke baad screenshot bhej dena, kaam turant shuru!",
+          "Easypaisa se karo{name}: 0332-2281507\n50% advance → design shuru → approve hone pe baaki 50% → website live! 🚀"
+        ] },
+      { keys: ['process','kaise hoga','kaam kaise','tarika','procedure'],
+        replies: [
+          "Process easy hai{name}:\n1️⃣ Order karo (form ya WhatsApp)\n2️⃣ 50% advance (Easypaisa)\n3️⃣ Design banao → approve → baaki payment → LIVE! 🎉",
+          "3 steps me kaam{name}! 📋 Order → Advance → Delivery. Upar 'Kaam Kaise Hoga' section me poori detail hai!"
+        ] },
+      { keys: ['mobile','phone','android','responsive'],
+        replies: [
+          "✅ 100% Mobile Friendly{name}! Phone, tablet, computer — sab pe perfect chalegi. Aaj kal 80% log mobile se dekhte hain, isliye mobile-first design!",
+          "Bilkul{name}! 📱 Website har screen pe adjust hogi — chota phone ho ya bada monitor!"
+        ] },
+      { keys: ['update','change','badalna','edit','revision'],
+        replies: [
+          "🔄 Chhote changes to FREE hain{name}! Baad me bhi updates saste rate pe — life-time support ka plan hai hamara!",
+          "Tension mat lo{name} — banwane ke baad chhote-mote changes free kar dunga. Content badalna ho, photo lagani ho — sab ho jayega!"
+        ] },
+      { keys: ['hosting','domain','.com','live kaise','internet pe'],
+        replies: [
+          "🌐 FREE hosting ke saath website milti hai{name}! Apna .com chahiye toh wo bhi lagwa dunga — sirf domain ka kharcha (~Rs 2,000/saal). Baaki sab main sambhalunga!",
+          "Hosting meri taraf se FREE{name}! 🎁 Domain (.com) chahiye toh bhi arrangement ho jayega — extra service ke taur pe!"
+        ] },
+      { keys: ['discount','kam','sasta','cheap','offer','deal','bhaav'],
+        replies: [
+          "Bhai{_or_name}, rates pehle se hi market se kam hain! 😄 Lekin 2 websites banwao to thoda adjust kar dunga — WhatsApp pe baat karo!",
+          "Sasta bhi hai, quality bhi{name}! 🤝 Pehli baar ka customer ho to batao — kuch special kar dunga!"
+        ] },
+      { keys: ['joke','mazaak','funny','hasao','mazak'],
+        replies: [
+          "😂 Website itni fast banti hai ke... Google bhi bolta hai — 'Bhai ruk ja, ye to pehle aa gayi!'",
+          "Ek customer ne kaha 'website itni sundar hai ke dushman bhi fan ho gaya!' 😎 Zyaada nahi bol raha, sach bol raha hu{name}!",
+          "Programmer ki wife: 'Doodh lao!' Programmer: 'Cart me add kar diya, 3-5 din me deliver ho jayega!' 😂 — chalo, ab kaam ki baat karein{name}?"
+        ] },
+      { keys: ['shukriya','thanks','thank you','jazak','meherbani'],
+        replies: [
+          "Koi baat nahi{name}! 😊 Aur kuch chahiye toh yahi hu — ya WhatsApp pe milte hain!",
+          "JazakAllah{name}! 🤗 Order karna ho toh neeche form hai — ya seedha WhatsApp!"
+        ] },
+      { keys: ['bye','allah hafiz','khuda hafiz','chalta hu','milte hain'],
+        replies: [
+          "Allah Hafiz{name}! 👋 Jab website ki zaroorat ho — yaad rakhna, main yahi hu!",
+          "Milte hain{name}! 😊 Order ka form neeche hai — kabhi bhi bhar dena!"
+        ] },
+      { keys: ['tum kaun','kaun ho','who are you','apna taruf','tera naam'],
+        replies: [
+          "🤖 Main Mustafa Web ka AI Bot hu — v2.0! Mera apna dimag hai, tumhara naam yaad rakhta hu, advance calculator chalata hu, aur jokes bhi marta hu{name}! 😎",
+          "Main wo bot hu{name} jo 24/7 awake rehta hai! 🧠 Naam, rates, calculator, jokes — sab mere paas hai. Master (Mustafa) website banate hain, main information deta hu!"
+        ] },
+      { keys: ['bot accha','bot zabardast','good bot','shabash','wah','kamaal','zabardast'],
+        replies: [
+          "Shukriya{name}! 😊 Main roz smart ho raha hu! Aur kuch puchna hai?",
+          "Aap ka pyar hi meri taqat hai{name}! 🥹 Chalo, ab kaam ki baat — website banwani hai kya?"
+        ] },
+      { keys: ['order','banwani','banwana','banana hai','chahiye website','order karna'],
+        replies: [
+          "Zabardast{name}! 🚀 Neeche 'Order Karo' section hai:\n📝 Form bharo (order email pe jayega)\n💬 Ya WhatsApp karo 0332 2281507\nDono me se kuch bhi — 5 minute me reply!",
+          "Ye to khushkhabri hai{name}! 🎉 Order form neeche hai — naam, number, website type bharo aur submit! Main turant aage badhaunga!"
+        ] }
     ];
+
+    var fallbacks = [
+      "Ye to mere dimag ke bahar hai{name} 😅 Lekin ye puch sakte ho: 💰 rates, 🧮 advance calculator, ⏰ delivery, 💳 payment — ya WhatsApp karo 0332 2281507!",
+      "Hmm... 🤔 ye samajh nahi aaya. 'Rates', 'Advance', 'Time', 'Payment' — in me se kuch likho{name}, ya seedha WhatsApp pe aa jao!"
+    ];
+
+    var nameConfirms = [
+      "Wah{name}! Bohat pyara naam! 😄 Ab pucho jo puchna hai — 🧮 advance calculator bhi chala sakta hu!",
+      "Bohat khoob{name}! 🤝 Yaad rakh liya — ab hamesha naam se bulunga! Batao, kaisi website chahiye?",
+      "{name} — naam pakka yaad! 🧠 Ab pucho: rates? advance? delivery? Jo chahiye!"
+    ];
+
+    var badWords = ['hu','hoon','hai','ka','ki','ke','website','banana','banwani','banwana','business','main','mujhe','kya','acha','theek','haan','han','yes','no','nahi','store','shop','page','mera','apna','bhai','delivery','advance','payment','rate','rates','price','chahiye','karna','kaisi','kaun'];
+
+    function timeNow() {
+      return new Date().toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' });
+    }
 
     function addMsg(text, who) {
       var div = document.createElement('div');
       div.className = 'msg ' + who;
       div.textContent = text;
+      var t = document.createElement('span');
+      t.className = 'time';
+      t.textContent = timeNow();
+      div.appendChild(t);
       chatBody.appendChild(div);
       chatBody.scrollTop = chatBody.scrollHeight;
+      return div;
     }
 
-    function botReply(userText) {
-      var text = userText.toLowerCase();
-      for (var i = 0; i < responses.length; i++) {
-        for (var j = 0; j < responses[i].keywords.length; j++) {
-          if (text.indexOf(responses[i].keywords[j]) !== -1) {
-            return responses[i].reply;
-          }
+    function botSay(text) {
+      var typing = document.createElement('div');
+      typing.className = 'msg bot typing';
+      typing.innerHTML = '<span></span><span></span><span></span>';
+      chatBody.appendChild(typing);
+      chatBody.scrollTop = chatBody.scrollHeight;
+      var delay = 600 + Math.min(text.length * 12, 1600);
+      setTimeout(function() {
+        typing.remove();
+        addMsg(text, 'bot');
+      }, delay);
+    }
+
+    function pick(arr) {
+      return arr[Math.floor(Math.random() * arr.length)];
+    }
+
+    function nameTag() {
+      return userName ? ' ' + userName : '';
+    }
+
+    function extractName(text) {
+      var m = text.match(/(?:mera naam|naam|main|i am|my name is)\s+([a-zA-Z]{2,15})/);
+      if (m) {
+        var w = m[1].toLowerCase();
+        if (badWords.indexOf(w) === -1) return w.charAt(0).toUpperCase() + w.slice(1);
+      }
+      var words = text.trim().split(/\s+/);
+      if (words.length <= 2) {
+        var w2 = words[words.length - 1].replace(/[^a-zA-Z]/g, '');
+        if (w2.length >= 2 && badWords.indexOf(w2.toLowerCase()) === -1) {
+          return w2.charAt(0).toUpperCase() + w2.slice(1).toLowerCase();
         }
       }
-      return "Ye sawal mere paas nahi hai 😅 WhatsApp karo — 0332 2281507 pe turant reply milega! 📱";
+      return null;
+    }
+
+    function tryCalc(text) {
+      var svc = 0, label = '';
+      if (text.indexOf('landing') !== -1) { svc = rates.landing; label = '📄 Landing Page'; }
+      else if (text.indexOf('portfolio') !== -1) { svc = rates.portfolio; label = '💼 Portfolio'; }
+      else if (text.indexOf('store') !== -1 || text.indexOf('shop') !== -1) { svc = rates.store; label = '🛒 Online Store'; }
+      else if (text.indexOf('business') !== -1) { svc = rates.business; label = '🏪 Business Website'; }
+      if (!svc) return null;
+      var half = svc / 2;
+      var calcMsg = "🧮 " + label + " ka hisaab:\n💰 Total: Rs " + svc.toLocaleString() + "\n💚 50% Advance: Rs " + half.toLocaleString() + "\n📦 Delivery pe: Rs " + half.toLocaleString();
+      if (text.indexOf('advance') !== -1 || text.indexOf('calculator') !== -1 || text.indexOf('total') !== -1 || text.indexOf('kitna') !== -1 || text.indexOf('price') !== -1 || text.indexOf('rate') !== -1) {
+        return calcMsg + "\n\nReady ho{name}? Order form neeche hai! 🚀";
+      }
+      return null;
+    }
+
+    function think(raw) {
+      var text = raw.toLowerCase().trim();
+
+      // Naam ka intezaar ho raha hai?
+      if (pendingName) {
+        var n = extractName(text);
+        if (n) {
+          userName = n;
+          localStorage.setItem('mw_name', n);
+          pendingName = false;
+          return pick(nameConfirms).replace(/\{name\}/g, ' ' + userName);
+        }
+        pendingName = false;
+      }
+
+      // Naya naam bataya?
+      if ((text.indexOf('mera naam') !== -1 || text.indexOf('my name') !== -1) && text.indexOf('kaun') === -1) {
+        var n2 = extractName(text);
+        if (n2) {
+          userName = n2;
+          localStorage.setItem('mw_name', n2);
+          return pick(nameConfirms).replace(/\{name\}/g, ' ' + userName);
+        }
+        return "Naam to batao pehle! 😄 Likho: 'mera naam Ali hai' — jaisa bhi naam ho!";
+      }
+
+      // Calculator
+      var calc = tryCalc(text);
+      if (calc) return calc.replace(/\{name\}/g, nameTag());
+
+      // Sirf haan/ok?
+      if (['haan','han','yes','ok','okay','theek','acha','hmm','yep','haan ji'].indexOf(text) !== -1) {
+        return "Zabardast" + nameTag() + "! 👍 To pucho — 💰 rates? 🧮 advance? ⏰ delivery? 💳 payment? Jo chahiye!";
+      }
+
+      // Brain scoring — best match dhundo
+      var best = null, bestScore = 0;
+      for (var i = 0; i < brain.length; i++) {
+        var score = 0;
+        for (var j = 0; j < brain[i].keys.length; j++) {
+          if (text.indexOf(brain[i].keys[j]) !== -1) {
+            score += brain[i].keys[j].length > 3 ? 2 : 1;
+          }
+        }
+        if (score > bestScore) { bestScore = score; best = brain[i]; }
+      }
+      if (best) return pick(best.replies).replace(/\{name\}/g, nameTag()).replace(/\{_or_name\}/g, userName || 'dost');
+
+      return pick(fallbacks).replace(/\{name\}/g, nameTag());
     }
 
     function sendMsg() {
@@ -546,20 +739,27 @@
       if (!text) return;
       addMsg(text, 'user');
       chatInput.value = '';
-      setTimeout(function() { addMsg(botReply(text), 'bot'); }, 700);
+      botSay(think(text));
     }
 
     function quickAsk(q) {
       addMsg(q, 'user');
-      setTimeout(function() { addMsg(botReply(q), 'bot'); }, 700);
+      botSay(think(q));
     }
 
     chatToggle.onclick = function() {
       chatBox.classList.toggle('open');
       if (!greeted && chatBox.classList.contains('open')) {
         greeted = true;
+        var h = new Date().getHours();
+        var greet = h < 12 ? "Good morning" : (h < 20 ? "Assalam-o-Alaikum" : "Shab-bakhair");
         setTimeout(function() {
-          addMsg("Assalam-o-Alaikum! 👋 Main Mustafa Web ka bot hu. Rates, payment, delivery — kuch bhi puchho!", 'bot');
+          if (userName) {
+            botSay(greet + ", " + userName + "! 👋 Main yaad rakhta hu tumhe — mera dimag hai! 🧠\nPichli baar ki baat yaad hai? Chalo aage — kya puchna hai?");
+          } else {
+            botSay(greet + "! 👋 Main Mustafa Web ka AI Bot hu — mere paas APNA dimag hai! 🧠\nPehle tumhara naam kya hai? (Yaad rakhunga, pakka!)");
+            pendingName = true;
+          }
         }, 400);
       }
     };
