@@ -102,6 +102,13 @@
     }
     .pay-card p { color: #9d9dbd; font-size: 13px; }
     .pay-note {
+          .ep-btn {
+      display: block; padding: 12px; border-radius: 12px;
+      color: #0a0e27; font-weight: 700; font-size: 14px;
+      text-decoration: none; text-align: center;
+      transition: all 0.3s;
+    }
+    .ep-btn:hover { transform: translateY(-2px); opacity: 0.9; }
       max-width: 700px; margin: 35px auto 0; text-align: center;
       background: rgba(255,165,2,0.08); border: 1px solid #ffa502;
       border-radius: 14px; padding: 20px 25px;
@@ -373,12 +380,17 @@
     <h2 class="section-title">💳 Payment Kaise Karein?</h2>
     <p class="section-sub">50% advance — baaki delivery ke baad. Simple!</p>
     <div class="pay-cards">
-      <div class="pay-card">
-        <div class="pay-icon">💚</div>
-        <h3>Easypaisa</h3>
-        <div class="pay-num">0332-2281507</div>
-        <p>Account Title: [Apna Naam]</p>
-      </div>
+    <div class="pay-card">
+  <div class="pay-icon">💚</div>
+  <h3>Easypaisa</h3>
+  <div class="pay-num">0332-2281507</div>
+  <p>Account Title: [asra khalil]</p>
+  <div style="display:flex; flex-direction:column; gap:10px; margin-top:18px;">
+    <a href="easypaisa://app" class="ep-btn" style="background:#4ade80;">📱 Easypaisa App Kholo</a>
+    <a href="https://easypaisa.com.pk" target="_blank" class="ep-btn" style="background:#00d9ff;">🌐 Easypaisa Website</a>
+    <button onclick="copyEasypaisa()" class="ep-btn" style="background:#ffa502; border:none; font-family:'Poppins',sans-serif;">📋 Number Copy Karo</button>
+  </div>
+</div>
     </div>
     <div class="pay-note">
       <p><strong>📌 Payment Process:</strong> Order confirm hone ke baad 50% advance Easypaisa par karna hai.
